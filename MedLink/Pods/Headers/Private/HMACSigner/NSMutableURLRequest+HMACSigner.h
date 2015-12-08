@@ -1,0 +1,1 @@
+../../../HMACSigner/Pod/Classes/NSMutableURLRequest+HMACSigner.h

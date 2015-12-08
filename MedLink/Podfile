@@ -1,0 +1,19 @@
+
+ platform :ios, '8.0'
+
+ use_frameworks!
+
+target 'MedLink' do
+pod 'HMACSigner', '~> 0.1'
+pod 'GoogleAnalytics'
+
+end
+
+target 'MedLinkTests' do
+
+end
+
+target 'MedLinkUITests' do
+
+end
+

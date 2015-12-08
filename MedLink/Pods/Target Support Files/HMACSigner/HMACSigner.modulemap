@@ -1,0 +1,6 @@
+framework module HMACSigner {
+  umbrella header "HMACSigner-umbrella.h"
+
+  export *
+  module * { export * }
+}

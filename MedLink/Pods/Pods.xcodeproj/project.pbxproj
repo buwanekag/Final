@@ -1,0 +1,558 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1BA5AD541359B4F61A0958E143AFE866 /* Pods-MedLink-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5D60DC71A09632DC8B0E97C52EFB8D1E /* Pods-MedLink-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2EE7F78FF7FD4E130C5366BE1B2D0033 /* HMACSigner-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 70149137717D7860CBF8C9BEAA1C687D /* HMACSigner-dummy.m */; };
+		629C79B059A66C8217E7F06194CE8B21 /* Pods-MedLink-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 675047FDD92ECCEAC0731B0EF1A1D2B8 /* Pods-MedLink-dummy.m */; };
+		65E975E25C64CB5B7EA44693D0729D58 /* NSString+Crypto.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A5575A8E6A748C0F9E1E716D0270F6D /* NSString+Crypto.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6C58936F12E1349FC6278348BCD450F4 /* NSDate+HTTP.h in Headers */ = {isa = PBXBuildFile; fileRef = F9254AE93650DD66945675D59CC7D25E /* NSDate+HTTP.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		822743AEF90E080A3BE35A48C34AB7D7 /* NSDate+HTTP.m in Sources */ = {isa = PBXBuildFile; fileRef = F5086EF6D2E97B9557A75297C38BFF96 /* NSDate+HTTP.m */; };
+		8BBB4FBEDBCA7F7F316656146E8922BB /* NSMutableURLRequest+HMACSigner.m in Sources */ = {isa = PBXBuildFile; fileRef = 347C75B2B52938454F1CB6139C752204 /* NSMutableURLRequest+HMACSigner.m */; };
+		97E783CF80A6497EA1DFCC1FC70885CD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
+		B18FEA2142AFA69D9E0B961C20CE585B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
+		B7420F5F1DBD8288ADABB0A4034E5409 /* HMACSigner-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A46E470FF419031DE00D2886411CE8D /* HMACSigner-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D01F38316A90CE1EB6D4E435664AEFB3 /* NSMutableURLRequest+HMACSigner.h in Headers */ = {isa = PBXBuildFile; fileRef = FC24D2B7E8D3CDACA386DB04291F5ADF /* NSMutableURLRequest+HMACSigner.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D58EF5E76FE97C0B9CDB57B5C2CB6B54 /* NSString+Crypto.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6C07A244FA4AA9CBE0B6649E2D962E /* NSString+Crypto.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5BE93A0EDC721A8448E5B221DFA37E33 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 60C5D030252C4E41B7B553622CA8FF9F;
+			remoteInfo = HMACSigner;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0A46E470FF419031DE00D2886411CE8D /* HMACSigner-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "HMACSigner-umbrella.h"; sourceTree = "<group>"; };
+		101D833C06A869E2DD9BB3D40E8654E5 /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAIDictionaryBuilder.h; path = Headers/Public/GAIDictionaryBuilder.h; sourceTree = "<group>"; };
+		11A6D208F088FFE4835117B7EFB28CA1 /* Pods-MedLink-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MedLink-frameworks.sh"; sourceTree = "<group>"; };
+		1513D79F6A9BAB48166C0438D4B899AD /* GAILogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAILogger.h; path = Headers/Public/GAILogger.h; sourceTree = "<group>"; };
+		2084862DC8C9C16053795278DA4EC50F /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2767B14597907C6F974E64CCE68E4092 /* HMACSigner.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = HMACSigner.xcconfig; sourceTree = "<group>"; };
+		347C75B2B52938454F1CB6139C752204 /* NSMutableURLRequest+HMACSigner.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSMutableURLRequest+HMACSigner.m"; path = "Pod/Classes/NSMutableURLRequest+HMACSigner.m"; sourceTree = "<group>"; };
+		3644B3DFE2BCD454ECF03C3EBA1DE6D4 /* Pods-MedLink.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-MedLink.modulemap"; sourceTree = "<group>"; };
+		3D05A9EE33139F2B320CBC0F573DD49B /* Pods-MedLink.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MedLink.debug.xcconfig"; sourceTree = "<group>"; };
+		3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		3ED48E83684CCBA9E5A2ADA978C8FCCF /* GAIEcommerceProduct.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAIEcommerceProduct.h; path = Headers/Public/GAIEcommerceProduct.h; sourceTree = "<group>"; };
+		4B805927A78CB4AEA8C723D2F42F2BB5 /* GAITrackedViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAITrackedViewController.h; path = Headers/Public/GAITrackedViewController.h; sourceTree = "<group>"; };
+		57DE152FC57B08B98224868FC5D800C8 /* Pods-MedLink.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MedLink.release.xcconfig"; sourceTree = "<group>"; };
+		5D60DC71A09632DC8B0E97C52EFB8D1E /* Pods-MedLink-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MedLink-umbrella.h"; sourceTree = "<group>"; };
+		675047FDD92ECCEAC0731B0EF1A1D2B8 /* Pods-MedLink-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MedLink-dummy.m"; sourceTree = "<group>"; };
+		6C30139DACA225716AB5BC35032351CC /* Pods_MedLink.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MedLink.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FBAF8BC621CDFCC03E80C206A62E008 /* Pods-MedLink-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MedLink-acknowledgements.markdown"; sourceTree = "<group>"; };
+		70149137717D7860CBF8C9BEAA1C687D /* HMACSigner-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "HMACSigner-dummy.m"; sourceTree = "<group>"; };
+		7B649F19076A957688F9A78322751D38 /* GAITracker.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAITracker.h; path = Headers/Public/GAITracker.h; sourceTree = "<group>"; };
+		85C31892F2363CFED1AC48B415CC306E /* GAIEcommerceFields.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAIEcommerceFields.h; path = Headers/Public/GAIEcommerceFields.h; sourceTree = "<group>"; };
+		8A5575A8E6A748C0F9E1E716D0270F6D /* NSString+Crypto.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSString+Crypto.h"; path = "Pod/Classes/NSString+Crypto.h"; sourceTree = "<group>"; };
+		9224523A65D7167C144D56850520ED5C /* GAIEcommercePromotion.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAIEcommercePromotion.h; path = Headers/Public/GAIEcommercePromotion.h; sourceTree = "<group>"; };
+		94A465A80C3CE3C40C803799C0B83E14 /* GAIEcommerceProductAction.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAIEcommerceProductAction.h; path = Headers/Public/GAIEcommerceProductAction.h; sourceTree = "<group>"; };
+		A7D22E69C347CE15B3066BCE9438871B /* Pods-MedLink-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MedLink-acknowledgements.plist"; sourceTree = "<group>"; };
+		B96679EFAEBA2FBB665C3848EEB679D2 /* GAI.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAI.h; path = Headers/Public/GAI.h; sourceTree = "<group>"; };
+		B967B23F54AC77726326489CE6E79076 /* Pods-MedLink-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MedLink-resources.sh"; sourceTree = "<group>"; };
+		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		CB3B6902064C95481E746ED8B40F32B9 /* libGoogleAnalytics.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libGoogleAnalytics.a; path = Libraries/libGoogleAnalytics.a; sourceTree = "<group>"; };
+		D84436B3B8882587F7FB89F857656C2D /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D84FA05E33DD5B8EF8760ECCB95C52E9 /* HMACSigner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HMACSigner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB08D3E6F722ACBA817E161A89A4EAB0 /* HMACSigner-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "HMACSigner-prefix.pch"; sourceTree = "<group>"; };
+		E3B5F41322CBB344FF719BE577DB01AD /* GAIFields.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GAIFields.h; path = Headers/Public/GAIFields.h; sourceTree = "<group>"; };
+		E8CFAA722C5790E858389034D6DE9679 /* HMACSigner.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = HMACSigner.modulemap; sourceTree = "<group>"; };
+		F5086EF6D2E97B9557A75297C38BFF96 /* NSDate+HTTP.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSDate+HTTP.m"; path = "Pod/Classes/NSDate+HTTP.m"; sourceTree = "<group>"; };
+		F9254AE93650DD66945675D59CC7D25E /* NSDate+HTTP.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSDate+HTTP.h"; path = "Pod/Classes/NSDate+HTTP.h"; sourceTree = "<group>"; };
+		FA6C07A244FA4AA9CBE0B6649E2D962E /* NSString+Crypto.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSString+Crypto.m"; path = "Pod/Classes/NSString+Crypto.m"; sourceTree = "<group>"; };
+		FC24D2B7E8D3CDACA386DB04291F5ADF /* NSMutableURLRequest+HMACSigner.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSMutableURLRequest+HMACSigner.h"; path = "Pod/Classes/NSMutableURLRequest+HMACSigner.h"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		25ED7430E5E231D0A137FBD60AE85612 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				97E783CF80A6497EA1DFCC1FC70885CD /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E883B20A502DFA6FE73B5AB84BA6EF75 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B18FEA2142AFA69D9E0B961C20CE585B /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2452E99E0D0E117AF32DBDA5B9AB4AF9 /* GoogleAnalytics */ = {
+			isa = PBXGroup;
+			children = (
+				B96679EFAEBA2FBB665C3848EEB679D2 /* GAI.h */,
+				101D833C06A869E2DD9BB3D40E8654E5 /* GAIDictionaryBuilder.h */,
+				85C31892F2363CFED1AC48B415CC306E /* GAIEcommerceFields.h */,
+				3ED48E83684CCBA9E5A2ADA978C8FCCF /* GAIEcommerceProduct.h */,
+				94A465A80C3CE3C40C803799C0B83E14 /* GAIEcommerceProductAction.h */,
+				9224523A65D7167C144D56850520ED5C /* GAIEcommercePromotion.h */,
+				E3B5F41322CBB344FF719BE577DB01AD /* GAIFields.h */,
+				1513D79F6A9BAB48166C0438D4B899AD /* GAILogger.h */,
+				4B805927A78CB4AEA8C723D2F42F2BB5 /* GAITrackedViewController.h */,
+				7B649F19076A957688F9A78322751D38 /* GAITracker.h */,
+				6BA635810C01B6108E941BF0B6F8DECB /* Frameworks */,
+			);
+			path = GoogleAnalytics;
+			sourceTree = "<group>";
+		};
+		24D6FD4A19415C36967638C316D81373 /* Pods-MedLink */ = {
+			isa = PBXGroup;
+			children = (
+				D84436B3B8882587F7FB89F857656C2D /* Info.plist */,
+				3644B3DFE2BCD454ECF03C3EBA1DE6D4 /* Pods-MedLink.modulemap */,
+				6FBAF8BC621CDFCC03E80C206A62E008 /* Pods-MedLink-acknowledgements.markdown */,
+				A7D22E69C347CE15B3066BCE9438871B /* Pods-MedLink-acknowledgements.plist */,
+				675047FDD92ECCEAC0731B0EF1A1D2B8 /* Pods-MedLink-dummy.m */,
+				11A6D208F088FFE4835117B7EFB28CA1 /* Pods-MedLink-frameworks.sh */,
+				B967B23F54AC77726326489CE6E79076 /* Pods-MedLink-resources.sh */,
+				5D60DC71A09632DC8B0E97C52EFB8D1E /* Pods-MedLink-umbrella.h */,
+				3D05A9EE33139F2B320CBC0F573DD49B /* Pods-MedLink.debug.xcconfig */,
+				57DE152FC57B08B98224868FC5D800C8 /* Pods-MedLink.release.xcconfig */,
+			);
+			name = "Pods-MedLink";
+			path = "Target Support Files/Pods-MedLink";
+			sourceTree = "<group>";
+		};
+		39355589F619657CD05ED8BF2E153677 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				24D6FD4A19415C36967638C316D81373 /* Pods-MedLink */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		6BA635810C01B6108E941BF0B6F8DECB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CB3B6902064C95481E746ED8B40F32B9 /* libGoogleAnalytics.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				ED4FFB0D6E6D7C526400815F606034A5 /* Pods */,
+				EF33B549427CE231F60D846936C23462 /* Products */,
+				39355589F619657CD05ED8BF2E153677 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		AD695A1364985800223678FC23CC36B5 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				E8CFAA722C5790E858389034D6DE9679 /* HMACSigner.modulemap */,
+				2767B14597907C6F974E64CCE68E4092 /* HMACSigner.xcconfig */,
+				70149137717D7860CBF8C9BEAA1C687D /* HMACSigner-dummy.m */,
+				DB08D3E6F722ACBA817E161A89A4EAB0 /* HMACSigner-prefix.pch */,
+				0A46E470FF419031DE00D2886411CE8D /* HMACSigner-umbrella.h */,
+				2084862DC8C9C16053795278DA4EC50F /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/HMACSigner";
+			sourceTree = "<group>";
+		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BF6342C8B29F4CEEA088EFF7AB4DE362 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BF6342C8B29F4CEEA088EFF7AB4DE362 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		C14F30DD02903B79FA58B3EC6ED45AF8 /* HMACSigner */ = {
+			isa = PBXGroup;
+			children = (
+				F9254AE93650DD66945675D59CC7D25E /* NSDate+HTTP.h */,
+				F5086EF6D2E97B9557A75297C38BFF96 /* NSDate+HTTP.m */,
+				FC24D2B7E8D3CDACA386DB04291F5ADF /* NSMutableURLRequest+HMACSigner.h */,
+				347C75B2B52938454F1CB6139C752204 /* NSMutableURLRequest+HMACSigner.m */,
+				8A5575A8E6A748C0F9E1E716D0270F6D /* NSString+Crypto.h */,
+				FA6C07A244FA4AA9CBE0B6649E2D962E /* NSString+Crypto.m */,
+				AD695A1364985800223678FC23CC36B5 /* Support Files */,
+			);
+			path = HMACSigner;
+			sourceTree = "<group>";
+		};
+		ED4FFB0D6E6D7C526400815F606034A5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2452E99E0D0E117AF32DBDA5B9AB4AF9 /* GoogleAnalytics */,
+				C14F30DD02903B79FA58B3EC6ED45AF8 /* HMACSigner */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		EF33B549427CE231F60D846936C23462 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D84FA05E33DD5B8EF8760ECCB95C52E9 /* HMACSigner.framework */,
+				6C30139DACA225716AB5BC35032351CC /* Pods_MedLink.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		0185AED715B2223EE89F0321C83D9D9C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BA5AD541359B4F61A0958E143AFE866 /* Pods-MedLink-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4B7E0D096583779B12058CCD78C56001 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B7420F5F1DBD8288ADABB0A4034E5409 /* HMACSigner-umbrella.h in Headers */,
+				6C58936F12E1349FC6278348BCD450F4 /* NSDate+HTTP.h in Headers */,
+				D01F38316A90CE1EB6D4E435664AEFB3 /* NSMutableURLRequest+HMACSigner.h in Headers */,
+				65E975E25C64CB5B7EA44693D0729D58 /* NSString+Crypto.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		222124F2FB77CD00495BABD1A915F46B /* Pods-MedLink */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 79F3BD867A5382FFD1DDDAEC4A064A2E /* Build configuration list for PBXNativeTarget "Pods-MedLink" */;
+			buildPhases = (
+				62594AE67153AFF0AF2C840B61D5BE1A /* Sources */,
+				25ED7430E5E231D0A137FBD60AE85612 /* Frameworks */,
+				0185AED715B2223EE89F0321C83D9D9C /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				895D751BE0ABA1035FB47709BC8EF732 /* PBXTargetDependency */,
+			);
+			name = "Pods-MedLink";
+			productName = "Pods-MedLink";
+			productReference = 6C30139DACA225716AB5BC35032351CC /* Pods_MedLink.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		60C5D030252C4E41B7B553622CA8FF9F /* HMACSigner */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E3C03560F434D53DD13DEEBD4B5E5621 /* Build configuration list for PBXNativeTarget "HMACSigner" */;
+			buildPhases = (
+				A99DF5B97E87C4E9DE1CCA67E73D9DD7 /* Sources */,
+				E883B20A502DFA6FE73B5AB84BA6EF75 /* Frameworks */,
+				4B7E0D096583779B12058CCD78C56001 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HMACSigner;
+			productName = HMACSigner;
+			productReference = D84FA05E33DD5B8EF8760ECCB95C52E9 /* HMACSigner.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = EF33B549427CE231F60D846936C23462 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				60C5D030252C4E41B7B553622CA8FF9F /* HMACSigner */,
+				222124F2FB77CD00495BABD1A915F46B /* Pods-MedLink */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		62594AE67153AFF0AF2C840B61D5BE1A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				629C79B059A66C8217E7F06194CE8B21 /* Pods-MedLink-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A99DF5B97E87C4E9DE1CCA67E73D9DD7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2EE7F78FF7FD4E130C5366BE1B2D0033 /* HMACSigner-dummy.m in Sources */,
+				822743AEF90E080A3BE35A48C34AB7D7 /* NSDate+HTTP.m in Sources */,
+				8BBB4FBEDBCA7F7F316656146E8922BB /* NSMutableURLRequest+HMACSigner.m in Sources */,
+				D58EF5E76FE97C0B9CDB57B5C2CB6B54 /* NSString+Crypto.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		895D751BE0ABA1035FB47709BC8EF732 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = HMACSigner;
+			target = 60C5D030252C4E41B7B553622CA8FF9F /* HMACSigner */;
+			targetProxy = 5BE93A0EDC721A8448E5B221DFA37E33 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		22C4FEE2CC7A295E8211151C4C913F8B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 57DE152FC57B08B98224868FC5D800C8 /* Pods-MedLink.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-MedLink/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-MedLink/Pods-MedLink.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_MedLink;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		A70CDAD61F90AC503C7D04CC22DA2923 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		DBF8D83C0448BB4FC104E37FA7B6A328 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2767B14597907C6F974E64CCE68E4092 /* HMACSigner.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/HMACSigner/HMACSigner-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/HMACSigner/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/HMACSigner/HMACSigner.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = HMACSigner;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		EAC26F2427432AD04A54E01197B5C275 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3D05A9EE33139F2B320CBC0F573DD49B /* Pods-MedLink.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-MedLink/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-MedLink/Pods-MedLink.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_MedLink;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		F75554A5BC3E761D89D0BF7267CA3148 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2767B14597907C6F974E64CCE68E4092 /* HMACSigner.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/HMACSigner/HMACSigner-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/HMACSigner/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/HMACSigner/HMACSigner.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = HMACSigner;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		FB45FFD90572718D82AB9092B750F0CA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A70CDAD61F90AC503C7D04CC22DA2923 /* Debug */,
+				FB45FFD90572718D82AB9092B750F0CA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		79F3BD867A5382FFD1DDDAEC4A064A2E /* Build configuration list for PBXNativeTarget "Pods-MedLink" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EAC26F2427432AD04A54E01197B5C275 /* Debug */,
+				22C4FEE2CC7A295E8211151C4C913F8B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E3C03560F434D53DD13DEEBD4B5E5621 /* Build configuration list for PBXNativeTarget "HMACSigner" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DBF8D83C0448BB4FC104E37FA7B6A328 /* Debug */,
+				F75554A5BC3E761D89D0BF7267CA3148 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

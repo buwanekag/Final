@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9057" systemVersion="14F27" minimumToolsVersion="Automatic">
+    <entity name="RequestsData" representedClassName=".RequestsData" syncable="YES">
+        <attribute name="createdDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="requestSupplyID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="requestSupplyName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="toResponseData" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ResponseData" inverseName="toRequestsData" inverseEntity="ResponseData" syncable="YES"/>
+    </entity>
+    <entity name="ResponseData" representedClassName=".ResponseData" syncable="YES">
+        <attribute name="respondedAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="responseID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="responseType" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="toRequestsData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RequestsData" inverseName="toResponseData" inverseEntity="RequestsData" syncable="YES"/>
+    </entity>
+    <entity name="SuppliesData" representedClassName=".SuppliesData" syncable="YES">
+        <attribute name="supplyID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="supplyName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="supplyShortCode" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="RequestsData" positionX="-290" positionY="270" width="128" height="103"/>
+        <element name="ResponseData" positionX="-18" positionY="252" width="128" height="103"/>
+        <element name="SuppliesData" positionX="-135" positionY="117" width="128" height="88"/>
+    </elements>
+</model>

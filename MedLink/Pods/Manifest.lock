@@ -1,0 +1,13 @@
+PODS:
+  - GoogleAnalytics (3.14.0)
+  - HMACSigner (0.1.0)
+
+DEPENDENCIES:
+  - GoogleAnalytics
+  - HMACSigner (~> 0.1)
+
+SPEC CHECKSUMS:
+  GoogleAnalytics: 9be1afdb8deeac4bb5f13ca7f7d3b9db2a1f43dc
+  HMACSigner: 138f37de488262e11b1bb250c1b0329bc1f1352b
+
+COCOAPODS: 0.39.0
