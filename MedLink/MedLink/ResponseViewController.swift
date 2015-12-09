@@ -37,7 +37,7 @@ class ResponseViewController: UIViewController,UITableViewDelegate,UITableViewDa
         
         
         let request = dataManager.requestsArray[indexPath.row]
-        cell.textLabel?.text = request.requestSupplyID
+        cell.textLabel?.text = request.requestSupplyName!
        // cell.responseSupplyDisplay.text! = request.requestSupplyName!
         
         

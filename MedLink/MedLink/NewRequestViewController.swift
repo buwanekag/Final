@@ -12,6 +12,7 @@ class NewRequestViewController: UIViewController,UITableViewDelegate,UITableView
     
     var cloudManager = CloudManager.sharedInstance
     var dataManager = DataManager.sharedInstance
+    let messageComposer = MessageComposer()
     var selectedSupplyArray = [Bool]()
     var selectedItems = [String:SuppliesData]()
     
@@ -51,7 +52,7 @@ class NewRequestViewController: UIViewController,UITableViewDelegate,UITableView
         var index = 0
         for supplySelected in selectedSupplyArray {
             if supplySelected {
-                selections = selections + dataManager.suppliesArray[index].supplyName!+"\n"
+                selections = selections + dataManager.suppliesArray[index].supplyName!+"-"+dataManager.suppliesArray[index].supplyShortCode!+"\n"
             }
             index++
         }
@@ -99,6 +100,23 @@ class NewRequestViewController: UIViewController,UITableViewDelegate,UITableView
         cloudManager.sendRequestToServer(messageTextField.text!, supplyIds: supplyIds)
         messageTextField.resignFirstResponder()
     }
+    
+    //MARK: - MESSAGE METHOD
+    
+    @IBAction func sendTextMessageButtonTapped(sender: UIButton) {
+        if (messageComposer.canSendText()) {
+            let messageComposeVC = messageComposer.configuredMessageComposeViewController()
+            
+            presentViewController(messageComposeVC, animated: true, completion: nil)
+        } else {
+            
+            let errorAlert = UIAlertController(title: "Cannot Send Text Message", message: "Your device is not able to send text messages", preferredStyle: .ActionSheet)
+          //  let errorAlert = UIAlertView(title: "Cannot Send Text Message", message: "Your device is not able to send text messages.", delegate: self, cancelButtonTitle: "OK")
+          //  errorAlert.show()
+            errorAlert 
+        }
+    }
+
     
     
     

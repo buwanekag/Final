@@ -11,6 +11,7 @@
 		5E5856061C0BA0D600B56801 /* CloudManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5856051C0BA0D600B56801 /* CloudManager.swift */; };
 		5E6E0C711C13A096005349A8 /* ResponseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6E0C701C13A095005349A8 /* ResponseViewController.swift */; };
 		5E6E526D1C0D0C2B0093675B /* NewRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6E526C1C0D0C2B0093675B /* NewRequestViewController.swift */; };
+		5E7533A81C18847B00AFFA9D /* MessageComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7533A71C18847B00AFFA9D /* MessageComposer.swift */; };
 		5ECFD1BA1C17734A00EAE34D /* ResponseData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECFD1B41C17734A00EAE34D /* ResponseData+CoreDataProperties.swift */; };
 		5ECFD1BB1C17734A00EAE34D /* ResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECFD1B51C17734A00EAE34D /* ResponseData.swift */; };
 		5ECFD1BC1C17734A00EAE34D /* SuppliesData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECFD1B61C17734A00EAE34D /* SuppliesData+CoreDataProperties.swift */; };
@@ -53,6 +54,7 @@
 		5E5856051C0BA0D600B56801 /* CloudManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudManager.swift; sourceTree = "<group>"; };
 		5E6E0C701C13A095005349A8 /* ResponseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseViewController.swift; sourceTree = "<group>"; };
 		5E6E526C1C0D0C2B0093675B /* NewRequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewRequestViewController.swift; sourceTree = "<group>"; };
+		5E7533A71C18847B00AFFA9D /* MessageComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageComposer.swift; sourceTree = "<group>"; };
 		5ECFD1B41C17734A00EAE34D /* ResponseData+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ResponseData+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		5ECFD1B51C17734A00EAE34D /* ResponseData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseData.swift; sourceTree = "<group>"; };
 		5ECFD1B61C17734A00EAE34D /* SuppliesData+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SuppliesData+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				5E5856111C0CD36B00B56801 /* CoreData */,
 				5EDD1E3F1BF64F1F00C46F22 /* AppDelegate.swift */,
 				5EDD1E411BF64F1F00C46F22 /* ViewController.swift */,
+				5E7533A71C18847B00AFFA9D /* MessageComposer.swift */,
 				5E6E0C701C13A095005349A8 /* ResponseViewController.swift */,
 				5E6E526C1C0D0C2B0093675B /* NewRequestViewController.swift */,
 				5E5856051C0BA0D600B56801 /* CloudManager.swift */,
@@ -400,6 +403,7 @@
 				5ECFD1BF1C17734A00EAE34D /* RequestsData.swift in Sources */,
 				5ECFD1BE1C17734A00EAE34D /* RequestsData+CoreDataProperties.swift in Sources */,
 				5ECFD1BD1C17734A00EAE34D /* SuppliesData.swift in Sources */,
+				5E7533A81C18847B00AFFA9D /* MessageComposer.swift in Sources */,
 				5EDD1E481BF64F1F00C46F22 /* MedLink.xcdatamodeld in Sources */,
 				5ECFD1BC1C17734A00EAE34D /* SuppliesData+CoreDataProperties.swift in Sources */,
 				5E6E0C711C13A096005349A8 /* ResponseViewController.swift in Sources */,

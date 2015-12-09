@@ -4,9 +4,10 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Request History-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MedLink" customModuleProvider="target" sceneMemberID="viewController">
@@ -29,23 +30,31 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="160"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RHU-H7-wOn">
-                                                    <rect key="frame" x="8" y="35" width="335" height="35"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="byy-H6-7cl">
+                                                    <rect key="frame" x="8" y="8" width="227" height="27"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o04-z3-AUK">
-                                                    <rect key="frame" x="8" y="87" width="153" height="27"/>
+                                                    <rect key="frame" x="8" y="93" width="153" height="27"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="nBv-Jx-B1z">
+                                                    <rect key="frame" x="8" y="32" width="233" height="59"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="requestDateLabel" destination="o04-z3-AUK" id="QKm-tU-22r"/>
-                                            <outlet property="requestNameLabel" destination="RHU-H7-wOn" id="BmS-AP-Wbv"/>
+                                            <outlet property="requestNameView" destination="nBv-Jx-B1z" id="dqz-gq-rvU"/>
+                                            <outlet property="responseDateLabel" destination="byy-H6-7cl" id="rh5-Rw-hJr"/>
+                                            <outlet property="responseTypeLabel" destination="o04-z3-AUK" id="6Uy-9m-CwO"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -63,17 +72,19 @@
                             <constraint firstItem="E5B-Qh-xGv" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-64" id="viU-KB-sTQ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Hh2-x9-t1L">
-                        <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="xxl-rl-oXp">
-                            <connections>
-                                <action selector="refreshButtonPressed:" destination="BYZ-38-t0r" id="cBg-U4-ROh"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="E47-w4-9yH">
-                            <connections>
-                                <segue destination="od5-II-AsW" kind="show" id="GWk-4v-QCf"/>
-                            </connections>
-                        </barButtonItem>
+                    <navigationItem key="navigationItem" title="Request History" id="Hh2-x9-t1L">
+                        <rightBarButtonItems>
+                            <barButtonItem title="Item" systemItem="add" id="E47-w4-9yH">
+                                <connections>
+                                    <segue destination="od5-II-AsW" kind="show" id="GWk-4v-QCf"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" id="YAE-8n-vyG">
+                                <connections>
+                                    <segue destination="fgo-UK-bD5" kind="show" id="31T-uo-9t7"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="requestsList" destination="E5B-Qh-xGv" id="htk-o5-Cxg"/>
@@ -83,7 +94,57 @@
             </objects>
             <point key="canvasLocation" x="1056" y="-474"/>
         </scene>
-        <!--New Request View Controller-->
+        <!--Response Form-->
+        <scene sceneID="S1y-r6-i6C">
+            <objects>
+                <viewController id="fgo-UK-bD5" customClass="ResponseViewController" customModule="MedLink" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="orb-1z-qi7"/>
+                        <viewControllerLayoutGuide type="bottom" id="75M-jl-hmh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="sKe-f7-hpC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Vyw-Uy-3B0">
+                                <rect key="frame" x="70" y="96" width="222" height="228"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="JGD-ko-cB1">
+                                        <rect key="frame" x="0.0" y="92" width="222" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JGD-ko-cB1" id="owc-Ry-k2Y">
+                                            <rect key="frame" x="0.0" y="0.0" width="222" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="fgo-UK-bD5" id="Jls-eJ-2ZK"/>
+                                    <outlet property="delegate" destination="fgo-UK-bD5" id="Q4J-qI-jMI"/>
+                                </connections>
+                            </tableView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="vM3-iJ-Lzy">
+                                <rect key="frame" x="70" y="351" width="214" height="125"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Response Form" id="PNW-HW-eOM"/>
+                    <connections>
+                        <outlet property="requestList" destination="Vyw-Uy-3B0" id="cS5-de-dj2"/>
+                        <outlet property="requestsDisplay" destination="vM3-iJ-Lzy" id="OhF-sM-UbI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3qR-hd-Zb4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1778" y="-978"/>
+        </scene>
+        <!--Request Form-->
         <scene sceneID="ZKx-Qo-qvy">
             <objects>
                 <viewController id="od5-II-AsW" customClass="NewRequestViewController" customModule="MedLink" customModuleProvider="target" sceneMemberID="viewController">
@@ -95,7 +156,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qLN-h7-BW4">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qLN-h7-BW4">
                                 <rect key="frame" x="59" y="102" width="249" height="222"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -113,27 +174,30 @@
                                     <outlet property="delegate" destination="od5-II-AsW" id="qEX-ro-F6v"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZxM-ik-Dcr">
-                                <rect key="frame" x="59" y="353" width="89" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="faT-Qr-Bdl">
-                                <rect key="frame" x="67" y="445" width="189" height="30"/>
+                                <rect key="frame" x="59" y="503" width="189" height="30"/>
+                                <color key="backgroundColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ys3-ay-aMm">
-                                <rect key="frame" x="156" y="353" width="201" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="j8A-KH-quC">
+                                <rect key="frame" x="54" y="393" width="231" height="79"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AS7-VC-lvd">
+                                <rect key="frame" x="277" y="503" width="91" height="30"/>
+                                <state key="normal" title="Text"/>
+                                <connections>
+                                    <action selector="sendTextMessageButtonTapped:" destination="od5-II-AsW" eventType="touchUpInside" id="lkK-st-vbk"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="R5v-CP-gc0">
+                    <navigationItem key="navigationItem" title="Request Form" id="R5v-CP-gc0">
                         <barButtonItem key="rightBarButtonItem" title="Submit" id="Y8B-Be-Z0g">
                             <connections>
                                 <action selector="submitButtonPressed:" destination="od5-II-AsW" id="qVf-dj-LG8"/>
@@ -142,14 +206,13 @@
                     </navigationItem>
                     <connections>
                         <outlet property="messageTextField" destination="faT-Qr-Bdl" id="gwP-hk-ID4"/>
-                        <outlet property="selectedSupplyIDLabel" destination="ZxM-ik-Dcr" id="mpM-F7-UQS"/>
-                        <outlet property="selectedSupplyLabel" destination="Ys3-ay-aMm" id="Nd5-26-xC0"/>
+                        <outlet property="selectedSupplyDisplay" destination="j8A-KH-quC" id="LCB-js-llK"/>
                         <outlet property="supplyList" destination="qLN-h7-BW4" id="PgJ-X4-ffi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ygp-Gv-VfQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1777" y="-474"/>
+            <point key="canvasLocation" x="1778" y="-175"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="uIL-Cc-oyS">

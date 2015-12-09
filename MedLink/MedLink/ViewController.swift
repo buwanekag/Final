@@ -57,7 +57,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         cell.requestNameView.text = request.requestSupplyName!
         //cell.requestNameLabel.text = request.requestSupplyName
         
-        cell.requestDateLabel.text = cloudManager.formatStringFromDate(request.createdDate!)
+        cell.responseDateLabel.text = cloudManager.formatStringFromDate(request.createdDate!)
         
         
         return cell

@@ -10,9 +10,9 @@ import UIKit
 
 class RequestsTableViewCell: UITableViewCell {
     
-    @IBOutlet var requestDateLabel :UILabel!
-    @IBOutlet var requestNameLabel :UILabel!
-    
+    @IBOutlet var responseDateLabel :UILabel!
+    @IBOutlet var responseTypeLabel :UILabel!
+    @IBOutlet var requestNameView : UITextView!
     
     
     
