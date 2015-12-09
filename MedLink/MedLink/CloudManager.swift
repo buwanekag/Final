@@ -20,6 +20,7 @@ class CloudManager: NSObject {
     var suppliesArray = [SuppliesData]()
     var requestsArray = [RequestsData]()
     var responseArray = [ResponseData]()
+    var refreshControl = UIRefreshControl()
     
     
     var baseUrlString = "medlink-staging.herokuapp.com"
@@ -157,6 +158,11 @@ class CloudManager: NSObject {
         let urlSession = NSURLSession.sharedSession()
         let task = urlSession.dataTaskWithRequest(request) { (data, response, error) -> Void in
             if data != nil {
+                if self.refreshControl.refreshing
+                        {
+                            self.refreshControl.endRefreshing()
+                        }
+
                 
                 //                print("Data\(data)")
                 self.parseRequestsData(data!)
@@ -184,7 +190,7 @@ class CloudManager: NSObject {
             var supplyDict = [String : String]()
             
             for nameID in dataManager.suppliesArray{
-                supplyDict[nameID.supplyID!] = nameID.supplyName
+                supplyDict[nameID.supplyID!] = nameID.supplyName!+"\n"
             }
             
             for request in tempDictArray{
@@ -199,9 +205,9 @@ class CloudManager: NSObject {
                 //responseArray.removeAll()
                 var supplyNames = ""
                 for supply in suppliesArray {
-                    let supplyId = String(supply["id"] as! Int!)
+                    let supplyId = String(supply["id"] as! Int!)+"\n"
                     currentRequest.requestSupplyID = supplyId
-                    supplyNames += supplyDict[supplyId]!
+                    supplyNames += supplyDict[supplyId]!+"\n"
                     
                     if let response = supply.objectForKey("response") as? NSDictionary {
                         let supplyEntityDescription :NSEntityDescription! = NSEntityDescription.entityForName("ResponseData", inManagedObjectContext: managedObjetContext)
@@ -225,7 +231,7 @@ class CloudManager: NSObject {
                         print("No Response")
                     }
                 }
-                currentRequest.requestSupplyName = supplyNames
+                currentRequest.requestSupplyName = supplyNames+"\n"
                 
                 
             }
@@ -265,6 +271,14 @@ class CloudManager: NSObject {
         return dateFormatter.stringFromDate(date)
     }
     
+    //MARK: - PULL TO REFRESH METHOD
+    func pullToRefresh(){
+        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+                self.refreshControl.addTarget(self, action: "refresh", forControlEvents: UIControlEvents.ValueChanged)
+                //self.requestsList.addSubview(refreshControl)
+                //self.refreshTableView()
+
+    }
     
     
     

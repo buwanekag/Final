@@ -42,19 +42,8 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
             cell.responseTypeLabel.text = ""
         }
         
-      //  var nameDisplay = ""
-        
-       // var supplyDict = Dictionary<String, String>()
-        
-//        for nameID in dataManager.suppliesArray{
-//            supplyDict[nameID.supplyID!] = nameID.supplyName!
-//        }
-        
-//        for requestId in request.requestSupplyID{
-//            nameDisplay += supplyDict[requestId] + "\n"
-//        }
-        
-        cell.requestNameView.text = request.requestSupplyName!
+             
+        cell.requestNameView.text = request.requestSupplyName!+"\n"
         //cell.requestNameLabel.text = request.requestSupplyName
         
         cell.responseDateLabel.text = cloudManager.formatStringFromDate(request.createdDate!)
@@ -68,21 +57,19 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     
     
     func newDataReceived() {
-//        if self.refreshControl.refreshing
-//        {
-//            self.refreshControl.endRefreshing()
-//        }
-//        
-        requestsList.reloadData()
-      //  self.tableView?.reloadData()
-    }
+       requestsList.reloadData()
+          }
         
         
-       // requestsList.reloadData()
-  //  }
     
     func refreshTableView() {
         cloudManager.getRequestListFromServer()
+        let refresh = cloudManager.refreshControl
+        refresh.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refresh.addTarget(self, action: "refresh", forControlEvents: UIControlEvents.ValueChanged)
+       // self.requestsList.addSubview(refresh)
+        
+       // cloudManager.getRequestListFromServer()
     }
     
     
@@ -94,11 +81,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         // TURN THIS BACK ON!!!!!
-//        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-//        self.refreshControl.addTarget(self, action: "refresh", forControlEvents: UIControlEvents.ValueChanged)
-//        self.requestsList.addSubview(refreshControl)
-//        self.refreshTableView()
-//        
+        //refreshTableView()
         
        cloudManager.getSuppliesListFromServer()
         cloudManager.getRequestListFromServer()
@@ -112,6 +95,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     
     override func viewWillAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        refreshTableView()
         
     }
     
