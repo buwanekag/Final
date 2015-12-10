@@ -182,10 +182,10 @@ class CloudManager: NSObject {
     func parseRequestsData(data:NSData){
         removeAllRequests()
         removeAllResponses()
-        print("Supplies Array Count:\(dataManager.suppliesArray.count)")
-        for junk in dataManager.suppliesArray {
-            print("Supply: \(junk.supplyID) \(junk.supplyName)")
-        }
+        //print("Supplies Array Count:\(dataManager.suppliesArray.count)")
+        //for junk in dataManager.suppliesArray {
+          //  print("Supply: \(junk.supplyID) \(junk.supplyName)")
+       // }
         do {
             
             let jsonResult = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers)
@@ -197,7 +197,7 @@ class CloudManager: NSObject {
                 
                 
                 let requestSuppliesArray = request.objectForKey("supplies") as! [NSDictionary]
-                print("SA:\(requestSuppliesArray):SA")
+               // print("SA:\(requestSuppliesArray):SA")
                 
                 for supply in requestSuppliesArray {
                     let requestEntityDescription :NSEntityDescription! = NSEntityDescription.entityForName("RequestsData", inManagedObjectContext: managedObjetContext)
@@ -207,7 +207,7 @@ class CloudManager: NSObject {
                     currentRequest.createdDate = getDateFromString(dateString)
 
                     let supplyId = String(supply["id"] as! Int)
-                    print("id \(supplyId)")
+                   // print("id \(supplyId)")
                     currentRequest.requestSupplyID = supplyId
                     let foundSupply = findSupplyWithID(supplyId)
                     currentRequest.requestSupplyName = foundSupply.supplyName
@@ -313,11 +313,31 @@ class CloudManager: NSObject {
         
         let task = urlSession.dataTaskWithRequest(request) { (data, response, error) -> Void in
             
-            if data != nil {
+            if error != nil {
+                dispatch_async(dispatch_get_main_queue()){
+                    let alert = UIAlertController (title: "Not Submited", message: "Your request was not sent", preferredStyle: .Alert)
+                    
+                    alert.addAction(UIAlertAction(title: "Resend", style: .Default, handler: nil ))
+                    
+                    // self.presentViewController(alert, animated: true, completion: nil)
+                    
+                    print("error=\(error)")
+                }
+                
+                return
+                
                 
                 //                print("Data\(data)")
                 
             } else {
+                dispatch_async(dispatch_get_main_queue()){
+                    let alert = UIAlertController (title: "Submited", message: "Your request was sent", preferredStyle: .Alert)
+                    
+                    alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil ))
+                    
+                    // self.presentViewController(alert, animated: true, completion: nil)
+                }
+                
                 print("No Data")
             }
         }

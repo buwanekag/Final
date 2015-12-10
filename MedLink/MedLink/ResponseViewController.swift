@@ -14,6 +14,7 @@ class ResponseViewController: UIViewController,UITableViewDelegate,UITableViewDa
     var cloudManager = CloudManager.sharedInstance
     var dataManager = DataManager.sharedInstance
     var selectedRequestsArray = [Bool]()
+    var baseUrlString = "medlink-staging.herokuapp.com"
    // var selectedItems = [String:SuppliesData]()
     
     @IBOutlet var requestList: UITableView!
@@ -52,18 +53,18 @@ class ResponseViewController: UIViewController,UITableViewDelegate,UITableViewDa
         for supplySelected in selectedRequestsArray {
             if supplySelected {
                 selections = selections + dataManager.requestsArray[index].requestSupplyName! + "\n"
-                print("Sel:\(selections)")
+              //  print("Sel:\(selections)")
             }
             index++
         }
-        print("Array:\(selectedRequestsArray)")
+        //print("Array:\(selectedRequestsArray)")
         requestsDisplay.text! = selections
         
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
         let row = indexPath.row
-        print("Select \(row)")
+       // print("Select \(row)")
         
         //  selectedItems.append(dataManager.suppliesArray[indexPath.row])
         
@@ -80,7 +81,7 @@ class ResponseViewController: UIViewController,UITableViewDelegate,UITableViewDa
     
     //MARK: - INTERACTIVE METHOD
     
-    @IBAction func submitButtonPressed(sender:UIBarButtonItem){
+    @IBAction func receivedButtonPressed(sender:UIButton){
         
         
         var supplyIds = [String]()
@@ -89,27 +90,101 @@ class ResponseViewController: UIViewController,UITableViewDelegate,UITableViewDa
             if supplySelected {
                 supplyIds.append(dataManager.requestsArray[index].requestSupplyID!+"\n")
                 
-                print("suppies\(supplyIds)")
             }
             index++
         }
         
         
-        cloudManager.sendRequestToServer(requestsDisplay.text!, supplyIds: supplyIds)
+        sendReceivedRequestToServer(requestsDisplay.text!, supplyIds: supplyIds)
     }
     
-    
-    
-    
+    @IBAction func flagButtonPressed(sender:UIButton){
+        
+        
+        var supplyIds = [String]()
+        var index = 0
+        for supplySelected in selectedRequestsArray {
+            if supplySelected {
+                supplyIds.append(dataManager.requestsArray[index].requestSupplyID!+"\n")
+                
+            }
+            index++
+        }
+        
+        
+        sendFlagRequestToServer(requestsDisplay.text!, supplyIds: supplyIds)
+    }
 
+    
+    //MARK: - SEND RECEIVED RESPONSE METHOD
+    
+    func sendReceivedRequestToServer(message:String,supplyIds:[String]) {
+        let url = NSURL(string: "https://\(baseUrlString)/api/v1/responses")
+        let request = NSMutableURLRequest(URL: url!,cachePolicy: .ReloadIgnoringLocalCacheData, timeoutInterval: 30.0)
+        var ids = ""
+        let newItems = supplyIds.map({ item in "{{ response_id_here }}/mark_received=\(item)"})
+        ids = newItems.joinWithSeparator("&")
+        request.HTTPMethod = "POST"
+        request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.HTTPBody = "message=\(message)& \(ids)".dataUsingEncoding(NSUTF8StringEncoding)
+        request.signWithAccessIdentifier("2376", andSecret: "HLHSDDp+95IqeCuAjCslZRqRcPdnRXFd55W904lamDMQh9pa+UIrNRz+hiPpg5u7FKKPF5GjQPEPSWYbzbGbpw==")
+        let urlSession = NSURLSession.sharedSession()
+        let task = urlSession.dataTaskWithRequest(request) { (data, response, error) -> Void in
+            if error != nil {
+                dispatch_async(dispatch_get_main_queue()){
+                    let alert = UIAlertController (title: "Not Submited", message: "Your request was not sent", preferredStyle: .Alert)
+                    alert.addAction(UIAlertAction(title: "Resend", style: .Default, handler: nil ))
+                    self.presentViewController(alert, animated: true, completion: nil)
+                    print("error=\(error)")
+                }
+                return
+            } else {
+                dispatch_async(dispatch_get_main_queue()){
+                    let alert = UIAlertController (title: "Submited", message: "Your request was sent", preferredStyle: .Alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil ))
+                    self.presentViewController(alert, animated: true, completion: nil)
+                }
+                print("No Data")
+            }
+        }
+        task.resume()
+    }
 
+    //MARK: - SEND FLAG RESPONSE METHOD
     
-    
-    
-    
-    
-    
-    
+    func sendFlagRequestToServer(message:String,supplyIds:[String]) {
+        let url = NSURL(string: "https://\(baseUrlString)/api/v1/responses")
+        let request = NSMutableURLRequest(URL: url!,cachePolicy: .ReloadIgnoringLocalCacheData, timeoutInterval: 30.0)
+        var ids = ""
+        let newItems = supplyIds.map({ item in "{{ response_id_here }}/flag=\(item)"})
+        ids = newItems.joinWithSeparator("&")
+        request.HTTPMethod = "POST"
+        request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.HTTPBody = "message=\(message)& \(ids)".dataUsingEncoding(NSUTF8StringEncoding)
+        request.signWithAccessIdentifier("2376", andSecret: "HLHSDDp+95IqeCuAjCslZRqRcPdnRXFd55W904lamDMQh9pa+UIrNRz+hiPpg5u7FKKPF5GjQPEPSWYbzbGbpw==")
+        let urlSession = NSURLSession.sharedSession()
+        let task = urlSession.dataTaskWithRequest(request) { (data, response, error) -> Void in
+            if error != nil {
+                dispatch_async(dispatch_get_main_queue()){
+                    let alert = UIAlertController (title: "Not Submited", message: "Your request was not sent", preferredStyle: .Alert)
+                    alert.addAction(UIAlertAction(title: "Resend", style: .Default, handler: nil ))
+                    self.presentViewController(alert, animated: true, completion: nil)
+                    print("error=\(error)")
+                }
+                
+                return
+            } else {
+                dispatch_async(dispatch_get_main_queue()){
+                    let alert = UIAlertController (title: "Submited", message: "Your request was sent", preferredStyle: .Alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil ))
+                    self.presentViewController(alert, animated: true, completion: nil)
+                }
+                print("No Data")
+            }
+        }
+        task.resume()
+    }
+
     
     //MARK: - LIFE CYCLE METHOD
 
