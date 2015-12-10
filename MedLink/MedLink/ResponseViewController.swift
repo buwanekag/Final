@@ -35,9 +35,10 @@ class ResponseViewController: UIViewController,UITableViewDelegate,UITableViewDa
             cell.accessoryType = .None
         }
         
-        
+        cell.textLabel!.font = UIFont(name: "Helvetica", size: 12)
         let request = dataManager.requestsArray[indexPath.row]
-        cell.textLabel?.text = request.requestSupplyName!
+        print("Cell:\(request.requestSupplyName!)XXX")
+        cell.textLabel!.text = request.requestSupplyName!
        // cell.responseSupplyDisplay.text! = request.requestSupplyName!
         
         
@@ -51,10 +52,11 @@ class ResponseViewController: UIViewController,UITableViewDelegate,UITableViewDa
         for supplySelected in selectedRequestsArray {
             if supplySelected {
                 selections = selections + dataManager.requestsArray[index].requestSupplyName! + "\n"
+                print("Sel:\(selections)")
             }
             index++
         }
-        
+        print("Array:\(selectedRequestsArray)")
         requestsDisplay.text! = selections
         
     }

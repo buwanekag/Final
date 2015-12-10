@@ -17,9 +17,6 @@ class CloudManager: NSObject {
     let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     let managedObjetContext : NSManagedObjectContext! = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
-    var suppliesArray = [SuppliesData]()
-    var requestsArray = [RequestsData]()
-    var responseArray = [ResponseData]()
     var refreshControl = UIRefreshControl()
     
     
@@ -63,7 +60,7 @@ class CloudManager: NSObject {
     
     
     func getSuppliesListFromServer() {
-        
+        print("getting master supply list")
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         
         defer {
@@ -97,7 +94,7 @@ class CloudManager: NSObject {
             let jsonResult = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers)
             
             let tempDictArray = jsonResult.objectForKey("supplies") as! [NSDictionary]
-            suppliesArray.removeAll()
+            dataManager.suppliesArray.removeAll()
             
             // print("result\(jsonResult)")
             
@@ -113,10 +110,10 @@ class CloudManager: NSObject {
                 currentSupply.supplyShortCode = suppliesDict.objectForKey("shortcode") as? String
                 
                 
-              //  appDelegate.saveContext()
             }
+            appDelegate.saveContext()
             dataManager.suppliesArray = dataManager.fetchSupplies()!
-            
+            print("Master supply list count \(dataManager.suppliesArray.count)")
 
             dispatch_async(dispatch_get_main_queue()){
                 NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "receivedSupplyDataFromServer", object: nil))
@@ -177,40 +174,44 @@ class CloudManager: NSObject {
         
     }
     
+    func findSupplyWithID(supplyID: String) -> SuppliesData {
+        let supply = dataManager.suppliesArray.filter({$0.supplyID == supplyID})[0]
+        return supply
+    }
+    
     func parseRequestsData(data:NSData){
         removeAllRequests()
         removeAllResponses()
+        print("Supplies Array Count:\(dataManager.suppliesArray.count)")
+        for junk in dataManager.suppliesArray {
+            print("Supply: \(junk.supplyID) \(junk.supplyName)")
+        }
         do {
             
             let jsonResult = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers)
             //print("result\(jsonResult)")
-            let tempDictArray = jsonResult.objectForKey("requests") as! [NSDictionary]
-            requestsArray.removeAll()
+            let requestsDict = jsonResult.objectForKey("requests") as! [NSDictionary]
+            dataManager.requestsArray.removeAll()
             
-            var supplyDict = [String : String]()
-            
-            for nameID in dataManager.suppliesArray{
-                supplyDict[nameID.supplyID!] = nameID.supplyName!
-            }
-            
-            for request in tempDictArray{
+            for request in requestsDict {
                 
-                let requestEntityDescription :NSEntityDescription! = NSEntityDescription.entityForName("RequestsData", inManagedObjectContext: managedObjetContext)
-                let currentRequest:RequestsData! = RequestsData(entity: requestEntityDescription, insertIntoManagedObjectContext: managedObjetContext)
-                let dateString = request.objectForKey("created_at") as! String
-                currentRequest.createdDate = getDateFromString(dateString)
                 
-                let suppliesArray = request.objectForKey("supplies") as! [NSDictionary]
+                let requestSuppliesArray = request.objectForKey("supplies") as! [NSDictionary]
+                print("SA:\(requestSuppliesArray):SA")
                 
-                //responseArray.removeAll()
-                var supplyNames = ""
-                for supply in suppliesArray {
-                    let supplyId = String(supply["id"] as! Int!)
-                    print("id\(supplyId)")
+                for supply in requestSuppliesArray {
+                    let requestEntityDescription :NSEntityDescription! = NSEntityDescription.entityForName("RequestsData", inManagedObjectContext: managedObjetContext)
+                    let currentRequest:RequestsData! = RequestsData(entity: requestEntityDescription, insertIntoManagedObjectContext: managedObjetContext)
+                    
+                    let dateString = request.objectForKey("created_at") as! String
+                    currentRequest.createdDate = getDateFromString(dateString)
+
+                    let supplyId = String(supply["id"] as! Int)
+                    print("id \(supplyId)")
                     currentRequest.requestSupplyID = supplyId
-                    supplyNames += supplyDict[supplyId]!+"\n"
-                    print("list\(supplyNames)")
-                    //print("id\(currentRequest.requestSupplyID)")
+                    let foundSupply = findSupplyWithID(supplyId)
+                    currentRequest.requestSupplyName = foundSupply.supplyName
+                    
                     if let response = supply.objectForKey("response") as? NSDictionary {
                         let supplyEntityDescription :NSEntityDescription! = NSEntityDescription.entityForName("ResponseData", inManagedObjectContext: managedObjetContext)
                         
@@ -233,8 +234,7 @@ class CloudManager: NSObject {
                         print("No Response")
                     }
                 }
-                currentRequest.requestSupplyName = supplyNames
-                
+
                 
             }
             

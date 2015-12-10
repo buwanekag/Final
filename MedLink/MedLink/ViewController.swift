@@ -84,6 +84,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         //refreshTableView()
         
        cloudManager.getSuppliesListFromServer()
+        dataManager.suppliesArray = dataManager.fetchSupplies()!
         cloudManager.getRequestListFromServer()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "newDataReceived", name: "receivedDataFromServer", object: nil)
