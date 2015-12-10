@@ -113,7 +113,7 @@ class CloudManager: NSObject {
                 currentSupply.supplyShortCode = suppliesDict.objectForKey("shortcode") as? String
                 
                 
-                appDelegate.saveContext()
+              //  appDelegate.saveContext()
             }
             dataManager.suppliesArray = dataManager.fetchSupplies()!
             
@@ -135,13 +135,13 @@ class CloudManager: NSObject {
     
     func getRequestListFromServer() {
         
-        dataManager.requestsArray = dataManager.fetchRequests()!
-        dataManager.responseArray = dataManager.fetchResponses()!
+//        dataManager.requestsArray = dataManager.fetchRequests()!
+//        dataManager.responseArray = dataManager.fetchResponses()!
+//        
+//        if (!dataManager.requestsArray.isEmpty && !dataManager.responseArray.isEmpty) {
+//            return
+//        }
         
-        if (!dataManager.requestsArray.isEmpty && !dataManager.responseArray.isEmpty) {
-            return
-        }
-            
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         
         defer {
@@ -171,7 +171,7 @@ class CloudManager: NSObject {
             }
         }
         
-        //sleep(5)
+        
       
         task.resume()
         
@@ -190,7 +190,7 @@ class CloudManager: NSObject {
             var supplyDict = [String : String]()
             
             for nameID in dataManager.suppliesArray{
-                supplyDict[nameID.supplyID!] = nameID.supplyName!+"\n"
+                supplyDict[nameID.supplyID!] = nameID.supplyName!
             }
             
             for request in tempDictArray{
@@ -205,10 +205,12 @@ class CloudManager: NSObject {
                 //responseArray.removeAll()
                 var supplyNames = ""
                 for supply in suppliesArray {
-                    let supplyId = String(supply["id"] as! Int!)+"\n"
+                    let supplyId = String(supply["id"] as! Int!)
+                    print("id\(supplyId)")
                     currentRequest.requestSupplyID = supplyId
                     supplyNames += supplyDict[supplyId]!+"\n"
-                    
+                    print("list\(supplyNames)")
+                    //print("id\(currentRequest.requestSupplyID)")
                     if let response = supply.objectForKey("response") as? NSDictionary {
                         let supplyEntityDescription :NSEntityDescription! = NSEntityDescription.entityForName("ResponseData", inManagedObjectContext: managedObjetContext)
                         
@@ -231,7 +233,7 @@ class CloudManager: NSObject {
                         print("No Response")
                     }
                 }
-                currentRequest.requestSupplyName = supplyNames+"\n"
+                currentRequest.requestSupplyName = supplyNames
                 
                 
             }
@@ -240,6 +242,7 @@ class CloudManager: NSObject {
            
             dataManager.requestsArray = dataManager.fetchRequests()!
             dataManager.responseArray = dataManager.fetchResponses()!
+            
             dispatch_async(dispatch_get_main_queue()){
                 
                 NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "receivedDataFromServer", object: nil))

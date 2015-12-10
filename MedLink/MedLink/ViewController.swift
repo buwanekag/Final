@@ -43,7 +43,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         }
         
              
-        cell.requestNameView.text = request.requestSupplyName!+"\n"
+        cell.requestNameView.text = request.requestSupplyName!
         //cell.requestNameLabel.text = request.requestSupplyName
         
         cell.responseDateLabel.text = cloudManager.formatStringFromDate(request.createdDate!)
@@ -62,15 +62,15 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         
         
     
-    func refreshTableView() {
-        cloudManager.getRequestListFromServer()
-        let refresh = cloudManager.refreshControl
-        refresh.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        refresh.addTarget(self, action: "refresh", forControlEvents: UIControlEvents.ValueChanged)
-       // self.requestsList.addSubview(refresh)
-        
-       // cloudManager.getRequestListFromServer()
-    }
+//    func refreshTableView() {
+//        cloudManager.getRequestListFromServer()
+//        let refresh = cloudManager.refreshControl
+//        refresh.attributedTitle = NSAttributedString(string: "Pull to refresh")
+//        refresh.addTarget(self, action: "refresh", forControlEvents: UIControlEvents.ValueChanged)
+//       // self.requestsList.addSubview(refresh)
+//        
+//       // cloudManager.getRequestListFromServer()
+//    }
     
     
     
@@ -95,7 +95,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     
     override func viewWillAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        refreshTableView()
+        //refreshTableView()
         
     }
     
