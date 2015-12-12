@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewRequestViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class NewRequestViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate{
     
     var cloudManager = CloudManager.sharedInstance
     var dataManager = DataManager.sharedInstance
@@ -59,6 +59,7 @@ class NewRequestViewController: UIViewController,UITableViewDelegate,UITableView
         }
         
         selectedSupplyDisplay.text! = selections
+        selectedSupplyDisplay.textColor = UIColor.blueColor()
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
@@ -72,11 +73,6 @@ class NewRequestViewController: UIViewController,UITableViewDelegate,UITableView
         displaySelections()
         
     }
-    
-    
-    
-    
-    
     
     
     
@@ -99,7 +95,9 @@ class NewRequestViewController: UIViewController,UITableViewDelegate,UITableView
         
         
         sendRequestToServer(messageTextField.text!, supplyIds: supplyIds)
-        messageTextField.resignFirstResponder()
+        messageTextField.text! = ""
+        supplyIds.removeAll()
+        selectedSupplyDisplay.text! = ""
     }
     
     
@@ -133,9 +131,11 @@ class NewRequestViewController: UIViewController,UITableViewDelegate,UITableView
             
             if error != nil {
                 dispatch_async(dispatch_get_main_queue()){
-                    let alert = UIAlertController (title: "Not Submited", message: "Your request was not sent", preferredStyle: .Alert)
+                    let alert = UIAlertController (title: "Not Submited", message: "Request  not sent send text message", preferredStyle: .Alert)
                     
-                    alert.addAction(UIAlertAction(title: "Resend", style: .Default, handler: nil ))
+                    alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil ))
+                    //alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: sen))
+                    
                     
                      self.presentViewController(alert, animated: true, completion: nil)
                     
@@ -168,10 +168,6 @@ class NewRequestViewController: UIViewController,UITableViewDelegate,UITableView
 
     
     
-    
-    
-    
-    
     //MARK: - MESSAGE METHOD
     
     @IBAction func sendTextMessageButtonTapped(sender: UIButton) {
@@ -182,13 +178,9 @@ class NewRequestViewController: UIViewController,UITableViewDelegate,UITableView
         } else {
             
             let errorAlert = UIAlertController(title: "Cannot Send Text Message", message: "Your device is not able to send text messages", preferredStyle: .ActionSheet)
-                     errorAlert 
+            errorAlert
         }
     }
-
-    
-    
-    
     
     
     //MARK: - NOTIFICATION CENTER
@@ -203,13 +195,26 @@ class NewRequestViewController: UIViewController,UITableViewDelegate,UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "newDataReceived", name: "receivedSupplyDataFromServer", object: nil)
         
         
+        
+    
+    messageTextField.delegate = self
+        
+        
     }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+
+
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)

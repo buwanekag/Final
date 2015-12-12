@@ -22,6 +22,17 @@ class NetworkManager: NSObject {
         if serverAvailable {
             print("changed: server available")
         }else {
+            dispatch_async(dispatch_get_main_queue()){
+                
+                NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "noDataFromServer", object: nil))
+            }
+            
+            
+            
+            
+            
+            
+            
             print("changed: server not available")
         }
     }

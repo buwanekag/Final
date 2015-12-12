@@ -12,6 +12,7 @@ class RequestsTableViewCell: UITableViewCell {
     
     @IBOutlet var responseDateLabel :UILabel!
     @IBOutlet var responseTypeLabel :UILabel!
+    @IBOutlet var requestNameLabel: UILabel!
     @IBOutlet var requestNameView : UITextView!
     
     

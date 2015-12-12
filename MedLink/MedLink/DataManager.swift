@@ -107,11 +107,27 @@ class DataManager: NSObject{
         }catch {
             return nil
         }
+      
+        
+    }
+    
+    
+    func fetchCoreData(){
+        requestsArray = fetchRequests()!
+        responseArray = fetchResponses()!
+        dispatch_async(dispatch_get_main_queue()){
+            
+            NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "gotCoreData", object: nil))
+        }
+
         
     }
     
     override init() {
         super.init()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "fetchCoreData", name: "noDataFromServer", object: nil)
+       
 
         
         
