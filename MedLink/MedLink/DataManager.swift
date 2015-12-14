@@ -98,6 +98,7 @@ class DataManager: NSObject{
         do{
             let tempArray = try managedObjetContext!.executeFetchRequest(fetchRequest)
                 as! [ResponseData]
+          
             
             // print("list:\(tempArray)")
             

@@ -20,8 +20,16 @@ class NewRequestViewController: UIViewController,UITableViewDelegate,UITableView
     @IBOutlet var supplyList: UITableView!
     @IBOutlet var messageTextField: UITextField!
     @IBOutlet var selectedSupplyDisplay :UITextView!
+    @IBOutlet var logoDisplay :UIImageView!
+    @IBOutlet var textMessageButton:UIButton!
+    @IBOutlet var submitButton:UIButton!
+    
     
    
+   
+    
+
+    
     //MARK: - TABLEVIEW METHOD
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -37,16 +45,24 @@ class NewRequestViewController: UIViewController,UITableViewDelegate,UITableView
     func populateCell(tableView: UITableView, indexPath:NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
         if selectedSupplyArray[indexPath.row] {
+            textMessageButton.hidden = false
+            submitButton.hidden = false
+            
             cell.accessoryType = .Checkmark
         } else {
             cell.accessoryType = .None
+            //textMessageButton.hidden = true
+           // submitButton.hidden = true
         }
         let displayUser = dataManager.suppliesArray[indexPath.row]
         cell.textLabel?.text = displayUser.supplyName
+
         return cell
         
         
     }
+    
+    
     
     func displaySelections() {
         var selections = ""
@@ -60,6 +76,8 @@ class NewRequestViewController: UIViewController,UITableViewDelegate,UITableView
         
         selectedSupplyDisplay.text! = selections
         selectedSupplyDisplay.textColor = UIColor.blueColor()
+        selectedSupplyDisplay.font = UIFont(name: "Apple SD Gothic Neo", size: 18)
+        //selectedSupplyDisplay.layer.borderColor = CGColorCreateCopy()
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
@@ -79,9 +97,7 @@ class NewRequestViewController: UIViewController,UITableViewDelegate,UITableView
     
     //MARK: - INTERACTIVE METHOD
     
-    @IBAction func submitButtonPressed(sender:UIBarButtonItem){
-        
-        
+    @IBAction func submitButtonPressed(sender:UIButton){
         var supplyIds = [String]()
         var index = 0
         for supplySelected in selectedSupplyArray {
@@ -92,15 +108,19 @@ class NewRequestViewController: UIViewController,UITableViewDelegate,UITableView
             }
             index++
         }
-        
-        
         sendRequestToServer(messageTextField.text!, supplyIds: supplyIds)
         messageTextField.text! = ""
         supplyIds.removeAll()
         selectedSupplyDisplay.text! = ""
     }
     
-    
+//    //MARK: - DATA VALIDATION METHOD
+//    
+//    func isValidData() {
+//        if ([selectedSupplyDisplay.c] >= 0){
+//            
+//        }
+//    
     //MARK: - SEND REQUEST METHOD
     
     func sendRequestToServer(message:String,supplyIds:[String]) {
@@ -152,6 +172,7 @@ class NewRequestViewController: UIViewController,UITableViewDelegate,UITableView
                     let alert = UIAlertController (title: "Submited", message: "Your request was sent", preferredStyle: .Alert)
                     
                     alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil ))
+                    //self.actionForLayer(CALayer, forKey: "")
                     
                     self.presentViewController(alert, animated: true, completion: nil)
                 }
@@ -196,11 +217,22 @@ class NewRequestViewController: UIViewController,UITableViewDelegate,UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "newDataReceived", name: "receivedSupplyDataFromServer", object: nil)
+        messageTextField.delegate = self
+        logoDisplay.image = UIImage(named: "pcLogo")
+        view.backgroundColor = UIColor.whiteColor()
+      selectedSupplyDisplay.layer.borderColor = UIColor.blueColor().CGColor
+        textMessageButton.hidden = true
+        submitButton.hidden = true
+        
+        //submitButton.tintColor = UIColor.blueColor()
         
         
+        //navigationController?.hidesBarsOnTap = true
         
-    
-    messageTextField.delegate = self
+       // let image = UIImage(named: "pcLogo")
+        //navigationItem.titleView = UIImageView(image: image)
+        //navigationItem.titleView = CGSize()
+        
         
         
     }
@@ -213,8 +245,8 @@ class NewRequestViewController: UIViewController,UITableViewDelegate,UITableView
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true)
     }
-
-
+    
+    
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)

@@ -6,6 +6,8 @@
 target 'MedLink' do
 pod 'HMACSigner', '~> 0.1'
 pod 'GoogleAnalytics'
+pod 'Parse' 
+pod 'ParseUI'
 
 end
 

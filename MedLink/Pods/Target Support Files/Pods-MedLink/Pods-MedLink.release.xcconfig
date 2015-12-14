@@ -2,7 +2,7 @@ GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
 HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/GoogleAnalytics"
 LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
 LIBRARY_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/GoogleAnalytics/Libraries"
-OTHER_CFLAGS = $(inherited) -iquote "$CONFIGURATION_BUILD_DIR/HMACSigner.framework/Headers" -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/GoogleAnalytics"
-OTHER_LDFLAGS = $(inherited) -ObjC -l"GoogleAnalytics" -l"sqlite3" -l"z" -framework "CoreData" -framework "HMACSigner" -framework "SystemConfiguration"
+OTHER_CFLAGS = $(inherited) -iquote "$CONFIGURATION_BUILD_DIR/Bolts.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/HMACSigner.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/Parse.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/ParseUI.framework/Headers" -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/GoogleAnalytics"
+OTHER_LDFLAGS = $(inherited) -ObjC -l"GoogleAnalytics" -l"sqlite3" -l"z" -framework "Bolts" -framework "CoreData" -framework "HMACSigner" -framework "Parse" -framework "ParseUI" -framework "SystemConfiguration"
 PODS_FRAMEWORK_BUILD_PATH = $(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/Pods-MedLink
 PODS_ROOT = ${SRCROOT}/Pods

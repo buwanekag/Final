@@ -123,6 +123,7 @@
 		5E5856111C0CD36B00B56801 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				5EDD1E461BF64F1F00C46F22 /* MedLink.xcdatamodeld */,
 				5ECFD1B41C17734A00EAE34D /* ResponseData+CoreDataProperties.swift */,
 				5ECFD1B51C17734A00EAE34D /* ResponseData.swift */,
 				5ECFD1B61C17734A00EAE34D /* SuppliesData+CoreDataProperties.swift */,
@@ -173,7 +174,6 @@
 				5EDD1E491BF64F1F00C46F22 /* Assets.xcassets */,
 				5EDD1E4B1BF64F1F00C46F22 /* LaunchScreen.storyboard */,
 				5EDD1E4E1BF64F1F00C46F22 /* Info.plist */,
-				5EDD1E461BF64F1F00C46F22 /* MedLink.xcdatamodeld */,
 			);
 			path = MedLink;
 			sourceTree = "<group>";

@@ -19,7 +19,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     @IBOutlet var requestsList :UITableView!
     
     
-    //MARK - SECTIONS METHOD
+    //MARK: - SECTIONS METHOD
     
     
     var sectionsArray = [NSDate]()
@@ -41,8 +41,14 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     }
     
     
-    func filterDateByCategory(date:NSDate) ->[RequestsData] {
-        let filteredRequests = dataManager.requestsArray.filter({($0.createdDate) == date})
+    func filterRequestDataByDate(date:NSDate) ->[RequestsData] {
+        let filteredRequests = dataManager.requestsArray.filter({
+            let calendar = NSCalendar.currentCalendar()
+            let components = calendar.components([.Day, .Month, .Year], fromDate: $0.createdDate!)
+            let noTimeDate = calendar.dateFromComponents(components)!
+            print("CD:\(noTimeDate) D:\(date)")
+            return noTimeDate == date
+        })
         return filteredRequests
     }
     
@@ -52,36 +58,32 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     //MARK:- TABLEVIEW METHOD
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        print("Sections:\(sectionsArray.count)")
         return sectionsArray.count
     }
    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //return dataManager.requestsArray.count
-        return filterDateByCategory(sectionsArray[section]).count
+        let count = filterRequestDataByDate(sectionsArray[section]).count
+        print("Section \(section):\(count)")
+        return count
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! RequestsTableViewCell
         
-        let request = dataManager.requestsArray[indexPath.row]
-        if let response = request.toResponseData?.allObjects.first as? ResponseData {
-                cell.responseTypeLabel.text = response.responseType
-        } else {
+        let currentReqeustData = filterRequestDataByDate(sectionsArray[indexPath.section])[indexPath.row]
         
+        if let currentResponseData = currentReqeustData.toResponseData?.allObjects.last as? ResponseData {
+            cell.responseTypeLabel.text = currentResponseData.responseType
+        } else {
+            
             cell.responseTypeLabel.text = ""
         }
+
+        cell.requestNameLabel.text = currentReqeustData.requestSupplyName
+      
         
-             
-        //cell.requestNameView.text = request.requestSupplyName!
-        //cell.requestNameLabel.text = request.requestSupplyName!
-        
-        cell.requestNameLabel.text = String(filterDateByCategory(sectionsArray[indexPath.section]))
-        
-       // cell.responseDateLabel.text = cloudManager.formatStringFromDate(request.createdDate!)
-       // let filter = filterDateByCategory(sectionsArray[indexPath.section])
-       // cell.responseDateLabel.text = ("\(formatStringFromDate(request.createdDate!))")
-        
-       // cell.responseDateLabel.text! = cloudManager.formatStringFromDate(request.createdDate!)
-       
+              
         return cell
         
     }
@@ -98,28 +100,17 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
 //        return "count:\(sectionsArray.count)"
 //    }
 //    
+   
+    
     //MARK: - NOTIFICATION CENTRE
     
     
     func newDataReceived() {
         sectionsArray = createSectionArray()
         requestsList.reloadData()
+        self.refreshControl.endRefreshing()
     }
         
-    
-    
-//    func refreshTableView() {
-//        cloudManager.getRequestListFromServer()
-//        let refresh = cloudManager.refreshControl
-//        refresh.attributedTitle = NSAttributedString(string: "Pull to refresh")
-//        refresh.addTarget(self, action: "refresh", forControlEvents: UIControlEvents.ValueChanged)
-//       // self.requestsList.addSubview(refresh)
-//        
-//       // cloudManager.getRequestListFromServer()
-//    }
-    
-    
-    
     
     
     //MARK: - LIFE CYCLE METHOD
@@ -127,16 +118,23 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
      
         
         
-       cloudManager.getSuppliesListFromServer()
+        cloudManager.getSuppliesListFromServer()
         dataManager.suppliesArray = dataManager.fetchSupplies()!
         cloudManager.getRequestListFromServer()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "newDataReceived", name: "receivedDataFromServer", object: nil)
-         NSNotificationCenter.defaultCenter().addObserver(self, selector: "newDataReceived", name: "gotCoreData", object: nil)
+         NSNotificationCenter.defaultCenter().addObserver(self, selector: "newDataReceived", name:
+            "gotCoreData", object: nil)
         
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        self.refreshControl.addTarget(self, action: "newDataReceived", forControlEvents: UIControlEvents.ValueChanged)
+        self.requestsList.addSubview(refreshControl)
         
 
        
@@ -144,7 +142,6 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     
     override func viewWillAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        //refreshTableView()
         
     }
     

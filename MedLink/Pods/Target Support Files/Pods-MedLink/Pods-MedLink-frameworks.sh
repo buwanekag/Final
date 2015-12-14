@@ -84,8 +84,14 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "Pods-MedLink/Bolts.framework"
   install_framework "Pods-MedLink/HMACSigner.framework"
+  install_framework "Pods-MedLink/Parse.framework"
+  install_framework "Pods-MedLink/ParseUI.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "Pods-MedLink/Bolts.framework"
   install_framework "Pods-MedLink/HMACSigner.framework"
+  install_framework "Pods-MedLink/Parse.framework"
+  install_framework "Pods-MedLink/ParseUI.framework"
 fi

@@ -19,6 +19,10 @@ class ResponseViewController: UIViewController,UITableViewDelegate,UITableViewDa
     
     @IBOutlet var requestList: UITableView!
     @IBOutlet var requestsDisplay: UITextView!
+    @IBOutlet var flagButton: UIButton!
+    @IBOutlet var receivedButton: UIButton!
+    @IBOutlet var flagImageView: UIImageView!
+    @IBOutlet var receivedImageView: UIImageView!
     
     
     
@@ -32,12 +36,21 @@ class ResponseViewController: UIViewController,UITableViewDelegate,UITableViewDa
        
        
         if selectedRequestsArray[indexPath.row] {
+            flagButton.hidden = false
+            receivedButton.hidden = false
+            flagImageView.hidden = false
+            receivedImageView.hidden = false
             cell.accessoryType = .Checkmark
         } else {
             cell.accessoryType = .None
+            flagButton.hidden = true
+            receivedButton.hidden = true
+            flagImageView.hidden = true
+            receivedImageView.hidden = true
+            
         }
         
-        //cell.textLabel!.font = UIFont(name: "Helvetica", size: 12)
+        
         let request = dataManager.requestsArray[indexPath.row]
         print("Cell:\(request.requestSupplyName!)XXX")
         cell.textLabel!.text = request.requestSupplyName!
@@ -60,6 +73,9 @@ class ResponseViewController: UIViewController,UITableViewDelegate,UITableViewDa
         }
         //print("Array:\(selectedRequestsArray)")
         requestsDisplay.text! = selections
+        requestsDisplay.font = UIFont(name: "Apple SD Gothic Neo", size: 18)
+        requestsDisplay.textColor = UIColor.blueColor()
+
         
     }
     
@@ -201,6 +217,17 @@ class ResponseViewController: UIViewController,UITableViewDelegate,UITableViewDa
         selectedRequestsArray.removeAll()
         for _ in dataManager.requestsArray {
             selectedRequestsArray.append(false)
+            //flagButton.setBackgroundImage(UIImage(named: "flag"));, forState: .Normal)
+            //let flag = UIImage(named: "flag")
+            //let received = UIImage(named: "received")
+            //flagButton.setImage(flag, forState: .Normal)
+          //  flagButton.imageView.se
+           // receivedButton.setImage(received, forState: .Normal)
+            flagImageView.image = UIImage(named: "flag")
+            receivedImageView.image = UIImage(named: "received")
+            
+            
+            
         }
     }
 
