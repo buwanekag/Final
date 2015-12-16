@@ -21,9 +21,7 @@ class ResponseViewController: UIViewController,UITableViewDelegate,UITableViewDa
     @IBOutlet var requestsDisplay: UITextView!
     @IBOutlet var flagButton: UIButton!
     @IBOutlet var receivedButton: UIButton!
-    @IBOutlet var flagImageView: UIImageView!
-    @IBOutlet var receivedImageView: UIImageView!
-    
+    @IBOutlet var logoDisplay :UIImageView!
     
     
     //MARK: - TABLE VIEW METHOD 
@@ -36,17 +34,11 @@ class ResponseViewController: UIViewController,UITableViewDelegate,UITableViewDa
        
        
         if selectedRequestsArray[indexPath.row] {
-            flagButton.hidden = false
-            receivedButton.hidden = false
-            flagImageView.hidden = false
-            receivedImageView.hidden = false
+            
             cell.accessoryType = .Checkmark
         } else {
             cell.accessoryType = .None
-            flagButton.hidden = true
-            receivedButton.hidden = true
-            flagImageView.hidden = true
-            receivedImageView.hidden = true
+            
             
         }
         
@@ -75,6 +67,16 @@ class ResponseViewController: UIViewController,UITableViewDelegate,UITableViewDa
         requestsDisplay.text! = selections
         requestsDisplay.font = UIFont(name: "Apple SD Gothic Neo", size: 18)
         requestsDisplay.textColor = UIColor.blueColor()
+        if requestsDisplay.text.characters.count > 0 {
+            flagButton.hidden = false
+            receivedButton.hidden = false
+            
+            
+        } else {
+            flagButton.hidden = true
+            receivedButton.hidden = true
+                        
+        }
 
         
     }
@@ -148,7 +150,7 @@ class ResponseViewController: UIViewController,UITableViewDelegate,UITableViewDa
             let task = urlSession.dataTaskWithRequest(request) { (data, response, error) -> Void in
                 if error != nil {
                     dispatch_async(dispatch_get_main_queue()){
-                        let alert = UIAlertController (title: "Submited", message: "Your request was sent", preferredStyle: .Alert)
+                        let alert = UIAlertController (title: "Submited", message: "Your receipt response was sent", preferredStyle: .Alert)
                         alert.addAction(UIAlertAction(title: "ok", style: .Default, handler: nil ))
                         self.presentViewController(alert, animated: true, completion: nil)
                         print("error=\(response)")
@@ -156,8 +158,8 @@ class ResponseViewController: UIViewController,UITableViewDelegate,UITableViewDa
                     return
                 } else {
                     dispatch_async(dispatch_get_main_queue()){
-                        let alert = UIAlertController (title: "Not Submited", message: "Your request was not sent", preferredStyle: .Alert)
-                        alert.addAction(UIAlertAction(title: "Resend", style: .Default, handler: nil ))
+                        let alert = UIAlertController (title: "Submited", message: "Your request was sent", preferredStyle: .Alert)
+                        alert.addAction(UIAlertAction(title: "ok", style: .Default, handler: nil ))
                         self.presentViewController(alert, animated: true, completion: nil)
                     }
                     print("response=\(response)")
@@ -191,8 +193,8 @@ class ResponseViewController: UIViewController,UITableViewDelegate,UITableViewDa
                     return
                 } else {
                     dispatch_async(dispatch_get_main_queue()){
-                        let alert = UIAlertController (title: "Not Submited", message: "Your request was not sent", preferredStyle: .Alert)
-                        alert.addAction(UIAlertAction(title: "Resend", style: .Default, handler: nil ))
+                        let alert = UIAlertController (title: "Submited", message: "Your request was  sent", preferredStyle: .Alert)
+                        alert.addAction(UIAlertAction(title: "ok", style: .Default, handler: nil ))
                         self.presentViewController(alert, animated: true, completion: nil)
                     }
                     print("response=\(response)")
@@ -217,16 +219,12 @@ class ResponseViewController: UIViewController,UITableViewDelegate,UITableViewDa
         selectedRequestsArray.removeAll()
         for _ in dataManager.requestsArray {
             selectedRequestsArray.append(false)
-            //flagButton.setBackgroundImage(UIImage(named: "flag"));, forState: .Normal)
-            //let flag = UIImage(named: "flag")
-            //let received = UIImage(named: "received")
-            //flagButton.setImage(flag, forState: .Normal)
-          //  flagButton.imageView.se
-           // receivedButton.setImage(received, forState: .Normal)
-            flagImageView.image = UIImage(named: "flag")
-            receivedImageView.image = UIImage(named: "received")
+            logoDisplay.image = UIImage(named: "pcLogo")
+            flagButton.hidden = true
+            receivedButton.hidden = true
             
             
+                        
             
         }
     }

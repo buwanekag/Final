@@ -16,7 +16,9 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     var refreshControl = UIRefreshControl()
     
     
+    
     @IBOutlet var requestsList :UITableView!
+     @IBOutlet var logoDisplay :UIImageView!
     
     
     //MARK: - SECTIONS METHOD
@@ -93,13 +95,25 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         formatter.dateFormat = "dd MMMM YYYY"
         let stringDate = formatter.stringFromDate(sectionsArray[section])
         
+        
         return stringDate
     }
-    
-//    func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+
+    //    func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
 //        return "count:\(sectionsArray.count)"
 //    }
 //    
+    
+//    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let returnedView = UIView(frame: CGRectMake(0, 0, 40, 10)) //set these values as necessary
+//        returnedView.backgroundColor = UIColor.lightGrayColor()
+//        
+////        var label = UILabel(frame: CGRectMake(labelX, labelY, labelWidth, labelHeight))
+////        label.text = self.sectionHeaderTitleArray[section]
+////        returnedView.addSubview(label)
+//        
+//        return returnedView
+//    }
    
     
     //MARK: - NOTIFICATION CENTRE
@@ -108,6 +122,13 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     func newDataReceived() {
         sectionsArray = createSectionArray()
         requestsList.reloadData()
+        //self.refreshControl.endRefreshing()
+    }
+    
+    
+    
+    func refreshData() {
+         cloudManager.getRequestListFromServer()
         self.refreshControl.endRefreshing()
     }
         
@@ -133,8 +154,9 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         
         self.refreshControl = UIRefreshControl()
         self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        self.refreshControl.addTarget(self, action: "newDataReceived", forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl.addTarget(self, action: "refreshData", forControlEvents: UIControlEvents.ValueChanged)
         self.requestsList.addSubview(refreshControl)
+        logoDisplay.image = UIImage(named: "pcLogo")
         
 
        

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewRequestViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate{
+class NewRequestViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,UITextViewDelegate{
     
     var cloudManager = CloudManager.sharedInstance
     var dataManager = DataManager.sharedInstance
@@ -23,6 +23,7 @@ class NewRequestViewController: UIViewController,UITableViewDelegate,UITableView
     @IBOutlet var logoDisplay :UIImageView!
     @IBOutlet var textMessageButton:UIButton!
     @IBOutlet var submitButton:UIButton!
+    @IBOutlet var messageTextView: UITextView!
     
     
    
@@ -45,18 +46,15 @@ class NewRequestViewController: UIViewController,UITableViewDelegate,UITableView
     func populateCell(tableView: UITableView, indexPath:NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
         if selectedSupplyArray[indexPath.row] {
-            textMessageButton.hidden = false
-            submitButton.hidden = false
             
             cell.accessoryType = .Checkmark
         } else {
             cell.accessoryType = .None
-            //textMessageButton.hidden = true
-           // submitButton.hidden = true
+            
         }
         let displayUser = dataManager.suppliesArray[indexPath.row]
         cell.textLabel?.text = displayUser.supplyName
-
+        
         return cell
         
         
@@ -75,8 +73,17 @@ class NewRequestViewController: UIViewController,UITableViewDelegate,UITableView
         }
         
         selectedSupplyDisplay.text! = selections
-        selectedSupplyDisplay.textColor = UIColor.blueColor()
+        selectedSupplyDisplay.textColor = UIColor.blackColor()
         selectedSupplyDisplay.font = UIFont(name: "Apple SD Gothic Neo", size: 18)
+        
+        
+        if selectedSupplyDisplay.text.characters.count > 0{
+            submitButton.hidden = false
+            textMessageButton.hidden = false
+        }else {
+            submitButton.hidden = true
+            textMessageButton.hidden = true
+        }
         //selectedSupplyDisplay.layer.borderColor = CGColorCreateCopy()
     }
     
@@ -108,19 +115,13 @@ class NewRequestViewController: UIViewController,UITableViewDelegate,UITableView
             }
             index++
         }
-        sendRequestToServer(messageTextField.text!, supplyIds: supplyIds)
-        messageTextField.text! = ""
+        sendRequestToServer(messageTextView.text!, supplyIds: supplyIds)
+        messageTextView.text! = ""
         supplyIds.removeAll()
         selectedSupplyDisplay.text! = ""
     }
     
-//    //MARK: - DATA VALIDATION METHOD
-//    
-//    func isValidData() {
-//        if ([selectedSupplyDisplay.c] >= 0){
-//            
-//        }
-//    
+  
     //MARK: - SEND REQUEST METHOD
     
     func sendRequestToServer(message:String,supplyIds:[String]) {
@@ -212,39 +213,36 @@ class NewRequestViewController: UIViewController,UITableViewDelegate,UITableView
     }
     
     
+    
     //MARK: - LIFE CYCLE METHOD
     
     override func viewDidLoad() {
         super.viewDidLoad()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "newDataReceived", name: "receivedSupplyDataFromServer", object: nil)
-        messageTextField.delegate = self
-        logoDisplay.image = UIImage(named: "pcLogo")
+        //messageTextField.delegate = self
+       messageTextView.delegate = self
+        
+         logoDisplay.image = UIImage(named: "pcLogo")
         view.backgroundColor = UIColor.whiteColor()
-      selectedSupplyDisplay.layer.borderColor = UIColor.blueColor().CGColor
+     
         textMessageButton.hidden = true
         submitButton.hidden = true
         
-        //submitButton.tintColor = UIColor.blueColor()
         
-        
-        //navigationController?.hidesBarsOnTap = true
-        
-       // let image = UIImage(named: "pcLogo")
-        //navigationItem.titleView = UIImageView(image: image)
-        //navigationItem.titleView = CGSize()
-        
-        
+    
+    
         
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n"
+        {
+            textView.resignFirstResponder()
+            return false
+        }
         return true
     }
-    
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        self.view.endEditing(true)
-    }
+
     
     
     
