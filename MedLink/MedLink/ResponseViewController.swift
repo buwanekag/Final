@@ -66,7 +66,7 @@ class ResponseViewController: UIViewController,UITableViewDelegate,UITableViewDa
         //print("Array:\(selectedRequestsArray)")
         requestsDisplay.text! = selections
         requestsDisplay.font = UIFont(name: "Apple SD Gothic Neo", size: 18)
-        requestsDisplay.textColor = UIColor.blueColor()
+        requestsDisplay.textColor = UIColor.blackColor()
         if requestsDisplay.text.characters.count > 0 {
             flagButton.hidden = false
             receivedButton.hidden = false
