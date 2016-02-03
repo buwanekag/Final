@@ -179,8 +179,9 @@ class CloudManager: NSObject {
         
     }
     
-    func findSupplyWithID(supplyID: String) -> SuppliesData {
-        let supply = dataManager.suppliesArray.filter({$0.supplyID == supplyID})[0]
+    func findSupplyWithID(supplyID: String) -> SuppliesData? {
+        // if Statement to handle a nil value
+        let supply = dataManager.suppliesArray.filter({$0.supplyID == supplyID}).first
         return supply
     }
     
@@ -216,8 +217,11 @@ class CloudManager: NSObject {
                     print("id \(supplyId)")
                     currentRequest.requestSupplyID = supplyId
                     let foundSupply = findSupplyWithID(supplyId)
-                    print("\(supplyId)")
-                    currentRequest.requestSupplyName = foundSupply.supplyName 
+                   // if currentRequest.requestSupplyName != foundSupply.supplyName{
+                       // print("no supply")
+                    //}else {
+                    //print("\(supplyId)")
+                    currentRequest.requestSupplyName = foundSupply?.supplyName
                     
                     
                     if let response = supply.objectForKey("response") as? NSDictionary {
@@ -246,7 +250,7 @@ class CloudManager: NSObject {
                     
                     }
                 
-               
+                   // }
             }
                     
 
