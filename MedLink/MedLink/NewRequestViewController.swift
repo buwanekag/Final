@@ -154,7 +154,7 @@ class NewRequestViewController: UIViewController,UITableViewDelegate,UITableView
                 dispatch_async(dispatch_get_main_queue()){
                     let alert = UIAlertController (title: "Not Submited", message: "Request  not sent send text message", preferredStyle: .Alert)
                     
-                    alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil ))
+                    alert.addAction(UIAlertAction(title: "Ok\(self.textMessageButtonPressed())3", style: .Default, handler: nil ))
                     //alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: sen))
                     
                     
@@ -191,6 +191,10 @@ class NewRequestViewController: UIViewController,UITableViewDelegate,UITableView
     
     
     //MARK: - MESSAGE METHOD
+    
+    func textMessageButtonPressed() {
+        self.sendTextMessageButtonTapped(textMessageButton)
+    }
     
     @IBAction func sendTextMessageButtonTapped(sender: UIButton) {
         if (messageComposer.canSendText()) {

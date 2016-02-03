@@ -96,7 +96,7 @@ class CloudManager: NSObject {
             let tempDictArray = jsonResult.objectForKey("supplies") as! [NSDictionary]
             dataManager.suppliesArray.removeAll()
             
-            // print("result\(jsonResult)")
+            print("result\(jsonResult)")
             
             
             for suppliesDict in tempDictArray {
@@ -114,6 +114,7 @@ class CloudManager: NSObject {
             appDelegate.saveContext()
             dataManager.suppliesArray = dataManager.fetchSupplies()!
             print("Master supply list count \(dataManager.suppliesArray.count)")
+            //print("supplies\(dataManager.suppliesArray)")
 
             dispatch_async(dispatch_get_main_queue()){
                 NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "receivedSupplyDataFromServer", object: nil))
@@ -165,7 +166,7 @@ class CloudManager: NSObject {
                         }
 
                 
-                //                print("Data\(data)")
+                               //print("Data\(data)")
                 self.parseRequestsData(data!)
             } else {
                 print("No Data")
@@ -186,6 +187,7 @@ class CloudManager: NSObject {
     func parseRequestsData(data:NSData){
         removeAllRequests()
         removeAllResponses()
+      
         //print("Supplies Array Count:\(dataManager.suppliesArray.count)")
         //for junk in dataManager.suppliesArray {
           //  print("Supply: \(junk.supplyID) \(junk.supplyName)")
@@ -211,10 +213,12 @@ class CloudManager: NSObject {
                     currentRequest.createdDate = getDateFromString(dateString)
 
                     let supplyId = String(supply["id"] as! Int)
-                   // print("id \(supplyId)")
+                    print("id \(supplyId)")
                     currentRequest.requestSupplyID = supplyId
                     let foundSupply = findSupplyWithID(supplyId)
-                    currentRequest.requestSupplyName = foundSupply.supplyName
+                    print("\(supplyId)")
+                    currentRequest.requestSupplyName = foundSupply.supplyName 
+                    
                     
                     if let response = supply.objectForKey("response") as? NSDictionary {
                         let supplyEntityDescription :NSEntityDescription! = NSEntityDescription.entityForName("ResponseData", inManagedObjectContext: managedObjetContext)
@@ -230,14 +234,21 @@ class CloudManager: NSObject {
                         let responseDateString = response["created_at"] as! String
                         currentResponse.respondedAt = getDateFromString(responseDateString)
                         
-                        //print("RI \(currentResponse.requestSupplyID) RT \(currentResponse.responseType)RD\(currentResponse.respondedAt)")
+                        print("RI \(currentResponse.responseID) RT \(currentResponse.responseType)RD\(currentResponse.respondedAt)")
                         
                         
                         
                                            } else {
                         print("No Response")
+                        
+                        
+                    
+                    
                     }
-                }
+                
+               
+            }
+                    
 
                 
             }

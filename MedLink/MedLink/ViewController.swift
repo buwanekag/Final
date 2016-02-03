@@ -121,7 +121,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     
     func newDataReceived() {
         sectionsArray = createSectionArray()
-        requestsList.reloadData()
+       requestsList.reloadData()
         //self.refreshControl.endRefreshing()
     }
     

@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '4491AC55152AC63A13F00F98'
+               BlueprintIdentifier = 'F4895B3225A85317D1AB1D90'
                BlueprintName = 'HMACSigner'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'HMACSigner.framework'>
